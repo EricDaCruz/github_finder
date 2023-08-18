@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { UserProps } from "../types/user";
 import { MdLocationPin } from "react-icons/md";
 
+import classes from "./User.module.css";
+
 export const User = ({
    avatar_url,
    login,
@@ -10,27 +12,26 @@ export const User = ({
    followers,
 }: UserProps) => {
    return (
-      <div>
+      <div className={classes.user}>
          <img src={avatar_url} alt={login} />
          <h2>{login}</h2>
          {location && (
-            <p>
+            <p className={classes.location}>
                <MdLocationPin />
                <span>{location}</span>
             </p>
          )}
-         <div>
+         <div className={classes.stats}>
             <div>
                <p>Followers:</p>
-               <p>{followers}</p>
+               <p className={classes.num}>{followers}</p>
             </div>
             <div>
                <p>Following:</p>
-               <p>{following}</p>
+               <p className={classes.num}>{following}</p>
             </div>
-
-            <Link to={`/respos/${login}`}>See the best projects</Link>
          </div>
+         <Link to={`/respos/${login}`}>See the best projects</Link>
       </div>
    );
 };
