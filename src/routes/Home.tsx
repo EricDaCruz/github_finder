@@ -3,12 +3,22 @@ import { useState } from "react";
 import { Search } from "../components/Search";
 import { UserProps } from "../types/user";
 import { User } from "../components/User";
+import { Error } from "../components/Error";
 
 export const Home = () => {
    const [user, setUser] = useState<UserProps | null>(null);
+   const [error, setError] = useState(false);
 
    const loadUser = async (username: string) => {
+      setError(false);
+      setUser(null);
+
       const res = await fetch(`https://api.github.com/users/${username}`);
+
+      if (res.status === 404) {
+         setError(true);
+         return;
+      }
 
       const data = await res.json();
 
@@ -30,6 +40,7 @@ export const Home = () => {
          <Search loadUser={loadUser} />
 
          {user && <User {...user} />}
+         {error && <Error />}
       </div>
    );
 };
