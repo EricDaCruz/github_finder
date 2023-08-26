@@ -31,7 +31,7 @@ export const User = ({
                <p className={classes.num}>{following}</p>
             </div>
          </div>
-         <Link to={`/respos/${login}`}>See the best projects</Link>
+         <Link to={`/repos/${login}`}>See the best projects</Link>
       </div>
    );
 };

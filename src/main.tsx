@@ -6,6 +6,7 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { Home } from "./routes/Home.tsx";
+import { Repositories } from "./routes/Repositories.tsx";
 
 const router = createBrowserRouter([
    {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
          {
             path: "/",
             element: <Home />,
+         },
+         {
+            path: "/repos/:username",
+            element: <Repositories />,
          },
       ],
    },
