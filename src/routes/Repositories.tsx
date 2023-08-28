@@ -4,23 +4,45 @@ import { useParams } from "react-router-dom";
 import classes from "./Repositories.module.css";
 import { ListRepos } from "../components/ListRepos";
 import { ThreeDots } from "react-loader-spinner";
+import { ReposProps } from "../types/repos";
 
 export const Repositories = () => {
    const { username } = useParams();
-   const [repos, setRepos] = useState([]);
+   const [repos, setRepos] = useState<ReposProps[] | []>([]);
    const [loading, setLoading] = useState(false);
+
+   const loadRepos = async (username: string | undefined) => {
+      const res = await fetch(`https://api.github.com/users/${username}/repos`);
+
+      const data = await res.json();
+
+      return data;
+   };
 
    useEffect(() => {
       setLoading(true);
-      fetch(`https://api.github.com/users/${username}/repos`)
-         .then((res) => res.json())
-         .then((data) => {
-            setRepos(data);
-            setLoading(false);
-         });
-   }, []);
 
-   console.log(repos);
+      async function getRepos() {
+         const data = await loadRepos(username);
+
+         const dataRepos = data.map((repo: any) => {
+            const dataRepo: ReposProps = {
+               name: repo.name,
+               language: repo.language,
+               html_url: repo.html_url,
+               forks: repo.forks,
+               stars: repo.stargazers_count,
+            };
+
+            return dataRepo;
+         });
+
+         setRepos(dataRepos);
+         setLoading(false);
+      }
+
+      getRepos();
+   }, []);
 
    return (
       <div>
@@ -40,7 +62,7 @@ export const Repositories = () => {
                />
             </div>
          ) : (
-            <ListRepos />
+            <ListRepos repos={repos} />
          )}
       </div>
    );
