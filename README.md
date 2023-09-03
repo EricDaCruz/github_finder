@@ -1,27 +1,48 @@
-# React + TypeScript + Vite
+<h1 style="text-align: center" align="center">🔍 Github Finder 🔎</h1>
+<br />
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<div style="text-align: center" align="center">
+    <img src="https://imgur.com/JiXzXQc.png" align="center" />
+</div>
 
-Currently, two official plugins are available:
+## Projeto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<p>
+   Este é um aplicativo React desenvolvido em TypeScript que permite aos usuários encontrar e visualizar os repositórios do GitHub de outros usuários. Ele utiliza a API do GitHub para realizar buscas e exibir informações detalhadas sobre os repositórios encontrados.
+</p>
 
-## Expanding the ESLint configuration
+## 🌐 Recursos Principais
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+<ul>
+   <li>Pesquisa de Repositórios: Pesquise por nome de usuário do GitHub e veja uma lista de repositórios públicos associados.</li>
+   <li>Detalhes do Repositório: Visualize informações detalhadas sobre cada repositório, incluindo descrição, linguagem, estrelas e muito mais.</li>
+   <li>Navegação Facilitada: Navegue pelos repositórios com facilidade e acesse diretamente os links para o GitHub.</li>
+</ul>
 
-- Configure the top-level `parserOptions` property like this:
+## 👨‍💻 Tecnologias
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+<ul>
+
+   <li>React: Utilizamos o React como o framework principal para a construção da interface do usuário.</li>
+   <li>TypeScript: O TypeScript é usado para adicionar tipagem estática ao JavaScript, tornando nosso código mais seguro e legível.</li>
+   <li>CSS Modules: Utilizamos CSS Modules para garantir um escopo localizado aos estilos, evitando conflitos de classes CSS.</li>
+   <li>API do GitHub: Integramos a API do GitHub para obter dados em tempo real sobre os repositórios</li>
+</ul>
+
+## ℹ️ Como usar
+
+<p>Para clonar e usar esta aplicação, você irá precisar de: <a href="https://git-scm.com/">Git</a>, <a href="https://nodejs.org/en/">Node</a> a versão LTS.</p>
+
+```bash
+# Clone this repository
+$ git clone https://github.com/EricDaCruz/github_finder.git
+
+# Go into the repository
+$ cd github_finder
+
+# Install dependencies
+$ npm install
+
+# Run Web App
+$ npm run dev
 ```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
