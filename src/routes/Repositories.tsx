@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -5,6 +6,7 @@ import classes from "./Repositories.module.css";
 import { ListRepos } from "../components/ListRepos";
 import { ThreeDots } from "react-loader-spinner";
 import { ReposProps } from "../types/repos";
+
 
 export const Repositories = () => {
    const { username } = useParams();
